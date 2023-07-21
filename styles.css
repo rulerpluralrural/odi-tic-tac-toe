@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+
+:root {
+    --clr-blck: #000000;
+    --clr-blue: #14213d;
+    --clr-orange: #fca311;
+    --clr-light-gry: #e5e5e5;
+    --clr-white: #ffffff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Cabin Sketch', cursive;
+    background-color: var(--clr-blue);
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 2.5rem;
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+a,
+label,
+h1,
+h2 {
+    color: var(--clr-orange);
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    display: none;
+}
+
+.menu-container {
+    background-color: var(--clr-blue);
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    width: 500px;
+    text-align: center;
+    position: relative;
+    padding: 30px;
+}
+
+.menu-container a {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: transform 150ms ease-in;
+}
+
+.menu-container a:hover {
+    transform: scale(1.4);
+}
+
+.menu-container label {
+    font-size: 1.9rem;
+    padding: 1rem;
+}
+
+.menu-container select {
+    text-align: center;
+    padding: .8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--clr-blue);
+    background-color: var(--clr-light-gry);
+    border: none;
+}
+
+.menu-container select:hover {
+    background-color: var(--clr-orange);
+}
+
+.menu-container button {
+    background-color: var(--clr-light-gry);
+    padding: .8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--clr-blue);
+    border: none;
+    margin-top: 1rem;
+}
+
+.menu-container button:hover {
+    border: none;
+    background-color: var(--clr-orange);
+    color: var(--clr-blue);
+}
+
+body .container {
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 2px solid var(--clr-light-gry);
+}
+
+.container > .card {
+    border: 2px solid var(--clr-light-gry);
+    width: 200px;
+}
+
+button.reset {
+    margin-top: 20px;
+    padding: .3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Cabin sketch', cursive;
+    width: 180px;
+    border: none;
+    border-radius: 30px;
+}
+
+button.reset:hover {
+    background-color: var(--clr-orange);
+    border: none;
+    cursor: pointer;
+}
