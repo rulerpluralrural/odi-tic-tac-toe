@@ -3,8 +3,10 @@
 :root {
     --clr-blck: #000000;
     --clr-blue: #14213d;
+    --light-blue: rgb(165, 165, 197);
+    --lighter-blue: #475c86;
     --clr-orange: #fca311;
-    --clr-light-gry: #e5e5e5;
+    --clr-light-gry: #c5c7dd;
     --clr-white: #ffffff;
 }
 
@@ -20,7 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    font-family: 'Cabin Sketch', cursive;
+    font-family: 'Cabin Sketch', serif, cursive;
     background-color: var(--clr-blue);
 }
 
@@ -62,25 +64,45 @@ h2 {
     background-color: var(--clr-blue);
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    min-height: 300px;
     width: 500px;
     text-align: center;
     position: relative;
     padding: 30px;
 }
 
-.menu-container a {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    transition: transform 150ms ease-in;
+.menu-container > p {
+    font-size: 1.5rem;
+    color: var(--clr-orange);
+    padding: 1rem;
 }
 
-.menu-container a:hover {
-    transform: scale(1.4);
+.marker-picker {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
-.menu-container label {
+.marker-picker button {
+    width: 30%;
+    padding: .5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--clr-blue);
+    border: none;
+    cursor: pointer;
+    background-color: var(--clr-light-gry);
+}
+
+.marker-picker button:hover {
+    border: none;
+    background-color: var(--clr-orange);
+    color: var(--clr-blue);
+}
+
+/* .menu-container label {
     font-size: 1.9rem;
     padding: 1rem;
 }
@@ -93,38 +115,51 @@ h2 {
     color: var(--clr-blue);
     background-color: var(--clr-light-gry);
     border: none;
+    cursor: pointer;
 }
 
 .menu-container select:hover {
     background-color: var(--clr-orange);
-}
-
-.menu-container button {
-    background-color: var(--clr-light-gry);
-    padding: .8rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--clr-blue);
-    border: none;
-    margin-top: 1rem;
-}
-
-.menu-container button:hover {
-    border: none;
-    background-color: var(--clr-orange);
-    color: var(--clr-blue);
-}
+} */
 
 body .container {
-    min-height: 600px;
+    margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 2px solid var(--clr-light-gry);
+    grid-gap: 2px;
+    grid-template-columns: repeat(3, auto);
+    background-color: var(--clr-light-gry);
 }
 
 .container > .card {
-    border: 2px solid var(--clr-light-gry);
-    width: 200px;
+    background-color: var(--clr-blue);
+    padding: 1rem;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    font-size: calc(150px * .8);
+    color: var(--clr-orange);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.container > .card:hover {
+    background: linear-gradient(var(--clr-blue), var(--lighter-blue), var(--light-blue));
+}
+
+.turn {
+    font-size: 3rem;
+    padding: 1rem;
 }
 
 button.reset {

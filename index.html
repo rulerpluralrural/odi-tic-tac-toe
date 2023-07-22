@@ -12,30 +12,34 @@
         <div class="menu-container">
             <div class="menu-header">
                 <h1>Tic Tac Toe</h1>
-                <a href="#" id="close">x</a>
             </div>
-            <label for="mode">Select game mode!</label>
+            <p>Pick your Marker!</p>
+            <div class="marker-picker">
+                <button id="x-marker">X</button>
+                <button id="o-marker">O</button>
+            </div>
+            <!-- <label for="mode">Select game mode!</label>
             <select name="mode" id="mode">
                 <option value="" disabled selected hidden>Select game mode!</option>
                 <option value="player">VS Player</option>
                 <option value="ai">VS AI</option>
-            </select>
-            <button class="play">Play Game!</button>
+            </select> -->
         </div>
     </div>
-        <h1>Tic Tac Toe</h1>
-        <h2 id="result">Result :</h2>
+        <h1 class="title">Tic Tac Toe</h1>
+        <h2>Result : <span id="result"></span></h2>
         <div class="container" id="container">
-            <div class="card" id="card-1"></div>
-            <div class="card" id="card-2"></div>
-            <div class="card" id="card-3"></div>
-            <div class="card" id="card-4"></div>
-            <div class="card" id="card-5"></div>
-            <div class="card" id="card-6"></div>
-            <div class="card" id="card-7"></div>
-            <div class="card" id="card-8"></div>
-            <div class="card" id="card-9"></div>
+            <div class="card pointer" data-index="1"></div>
+            <div class="card pointer" data-index="2"></div>
+            <div class="card pointer" data-index="3"></div>
+            <div class="card pointer" data-index="4"></div>
+            <div class="card pointer" data-index="5"></div>
+            <div class="card pointer" data-index="6"></div>
+            <div class="card pointer" data-index="7"></div>
+            <div class="card pointer" data-index="8"></div>
+            <div class="card pointer" data-index="9"></div>
         </div>
+        <h1 class="turn" id="turn"></h1>
         <button class="reset">Reset</button>
     <script src="script.js"></script>
 </body>
