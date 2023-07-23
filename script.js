@@ -1,41 +1,47 @@
 
-const players = (marker) => {
-    return {marker}
-}
-
-
 const gameBoard = (() => {
-    let board = ['', '', '', '', '', '', '', '', '']
+    const board = ['', '', '',
+                    '', '', '', 
+                    '', '', '']
 
-    const setBoard = (index, marker) => {
-        if (index > board.length) return;
-        board[index] = marker
+    const fillBoard = (index, mark) => {
+        board[index] = mark
+        console.log(board)
     }
 
-    const getBoard = (index) => {
-        if (index > board.length) return;
-        return board[index] 
+    const reset = () => {
+        for (let i = 0; i < board.length; i++) {
+            board[i] = '';
+            console.log(board)
+        }
+    }
+    
+    return {
+        fillBoard,
+        reset
     }
 
-    return{getBoard, setBoard}
 })();
 
 // Display the marker on the board
 const displayController = (() => {
 
+    const menu = document.getElementById('menu-options')
     const displayResult = document.getElementById('result')
     const displayTurn = document.getElementById('turn')
     const cards = document.querySelectorAll('.card')
+    const reset = document.getElementById('reset')
 
     cards.forEach(card => card.addEventListener('click', (e) => {
 
-            if(e.target.innerText !== '') {
+            if(e.target.textContent !== '') {
                 return
-            } else if(e.target.innerText === '') {
-                e.target.innerText = players.marker
+            } else if(e.target.textContent === '') {
+                e.target.textContent = players.marker
                 e.target.classList.remove('pointer')
                 e.target.classList.add('not-allowed')
                 e.target.removeEventListener('click', e.target)
+                gameBoard.fillBoard(e.target.getAttribute('data-index'), e.target.textContent)
             }
 
             if(players.marker === 'X') {
@@ -47,7 +53,22 @@ const displayController = (() => {
             }
         }))
         
+    reset.addEventListener('click', (e) => {
+        gameBoard.reset()
+        menu.classList.remove('close')
+        cards.forEach(card => {
+            card.textContent = ''
+            card.classList.add('pointer')
+            card.classList.remove('not-allowed')
+        })
+                
+    })
+
 })();
+
+const players = (marker) => {
+    return {marker}
+}
 
 // Get the players marker on button click
 const getPlayerMarker = (() => {
@@ -68,6 +89,19 @@ const getPlayerMarker = (() => {
         displayTurn.textContent = `X goes first, It\'s X's turn`
     })
 
+})();
+
+const game = (() => {
+    const winningCombo = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+    ]
 })();
 
 
