@@ -32,7 +32,6 @@ h1 {
 
 h2 {
     font-size: 2.5rem;
-    display: none;
 }
 
 a {
@@ -58,6 +57,10 @@ h2 {
 
 .close {
     display: none;
+}
+
+.show {
+    display: block;
 }
 
 .menu-container {
