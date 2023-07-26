@@ -53,19 +53,12 @@ const gameBoard = (() => {
     const stalemate = () => {
         return board.every(card => card != '')
     }
-
-    const isFinished = () => {
-        if(stalemate() == true || !checkWinner == true) {
-            
-        }
-    }
     
     return {
         fillBoard,
         getBoard,
         checkWinner,
         stalemate,
-        isFinished,
         reset,
     }
 
@@ -110,7 +103,10 @@ const displayController = (() => {
     }
 
     // game board event listener
-    cards.forEach(card => card.addEventListener('click', (e) => {
+    cards.forEach(card => card.addEventListener('click', startGame))
+
+    function startGame(e) {
+
             const cardIndex = e.target.getAttribute('data-index');
 
             if (e.target.textContent !== '') {
@@ -124,23 +120,22 @@ const displayController = (() => {
             }
 
              // console.log(gameBoard.checkWinner(cardIndex))
-            if(gameBoard.checkWinner(cardIndex)) {
+            if (gameBoard.checkWinner(cardIndex)) {
                 displayResult.classList.remove('close')
                 displayResult.textContent = `Result: Player ${players.marker} won`
                 displayTurn.classList.add('close')
-                gameBoard.isFinished
+                cards.forEach(card => card.removeEventListener('click', startGame))
             }
 
-            if(gameBoard.stalemate() && !gameBoard.checkWinner(cardIndex)) {
+            if (gameBoard.stalemate() && !gameBoard.checkWinner(cardIndex)) {
                 displayResult.classList.remove('close')
                 displayResult.textContent = `Result: It\'s a tie`
                 displayTurn.classList.add('close')
-                gameBoard.isFinished
+                cards.forEach(card => card.removeEventListener('click', startGame))
             }
 
             displayMarker()
-
-        }))
+        }
 
     // reset game
     reset.addEventListener('click', () => {
@@ -151,6 +146,7 @@ const displayController = (() => {
             card.textContent = ''
             card.classList.add('pointer')
             card.classList.remove('not-allowed')
+            card.addEventListener('click', startGame)
         })
                 
     })
